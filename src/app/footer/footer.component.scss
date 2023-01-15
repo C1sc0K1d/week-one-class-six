@@ -1,0 +1,15 @@
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 5px;
+}
+
+.footer__p {
+  width: auto;
+  min-width: auto;
+  height: auto;
+  min-height: auto;
+  padding: 10px;
+  font-size: 21px;
+}

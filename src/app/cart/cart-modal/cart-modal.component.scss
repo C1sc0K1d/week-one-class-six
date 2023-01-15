@@ -1,0 +1,101 @@
+* {
+  min-width: auto;
+  min-height: auto;
+  height: auto;
+  width: auto;
+  cursor: default;
+}
+
+.cart-modal__container {
+  position: absolute;
+  z-index: 30;
+  width: 50%;
+  height: 70%;
+  min-width: 50%;
+  min-height: 70%;
+  background-color: rebeccapurple;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 10px;
+  align-items: flex-end;
+}
+
+.cart-modal__products {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cart-modal__product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+  background-color: black;
+  border-radius: 10px;
+  width: 95%;
+  margin: 1.5% auto;
+  padding: 5px;
+}
+
+.cart-modal__product_name {
+  font-size: 19px;
+  margin: auto 5px;
+}
+
+.cart-modal__product_quantity {
+  font-size: 12px;
+  margin: auto 3px;
+}
+
+.cart-modal__remove_product {
+  font-size: 12px;
+  margin: auto 6px;
+  cursor: pointer;
+}
+
+.cart-modal__footer {
+  background-color: darkgrey;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 15px 15px 0 0;
+  padding: 15px;
+  width: 100%;
+}
+
+.cart-modal_prices {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cart-modal_dicount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cart-modal_dicount_input {
+  height: 20px;
+  font-size: 18px;
+  padding: 4px;
+  border-radius: 3px;
+  margin: 5px auto;
+  cursor: text;
+}
+
+.cart-modal_get_dicount_button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
