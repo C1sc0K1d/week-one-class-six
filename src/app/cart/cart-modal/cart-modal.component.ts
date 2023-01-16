@@ -54,11 +54,7 @@ export class CartModalComponent implements OnInit {
 
   // Function to find the index of the product wanted
   findIndex(product: Product) : number {
-    let index = this.cart.findIndex(item => {      
-      if (item.id == product.id) return true;
-      return false;
-    });
-    return index;
+    return this.cart.findIndex(item => (item.id == product.id) ? true : false);
   }
 
   // Function to subtract from the total the price value from the removed item, call subtract total event
