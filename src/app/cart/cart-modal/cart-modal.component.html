@@ -1,41 +1,23 @@
 <div class="cart-modal__container">
-  <span style="cursor: pointer; width: 12px; margin-right: 10px;">✖️</span>
+  <span style="cursor: pointer; width: 12px; margin-right: 10px;" (click)="closeModal()">✖️</span>
   <div class="cart-modal__products">
-    <div class="cart-modal__product">
-      <span class="cart-modal__product_name">Guitar</span>
-      <span class="cart-modal__product_quantity">Quantity: 1</span>
-      <span class="cart-modal__product_price">price: 100.00u</span>
-      <span class="cart-modal__remove_product">❌</span>
-    </div>
-    <div class="cart-modal__product">
-      <span class="cart-modal__product_name">Sax</span>
-      <span class="cart-modal__product_quantity">Quantity: 1</span>
-      <span class="cart-modal__product_price">price: 100.00u</span>
-      <span class="cart-modal__remove_product">❌</span>
-    </div>
-    <div class="cart-modal__product">
-      <span class="cart-modal__product_name">Violin</span>
-      <span class="cart-modal__product_quantity">Quantity: 1</span>
-      <span class="cart-modal__product_pricet">price: 100.00u</span>
-      <span class="cart-modal__remove_product">❌</span>
-    </div>
-    <div class="cart-modal__product">
-      <span class="cart-modal__product_name">Trumpet</span>
-      <span class="cart-modal__product_quantity">Quantity: 1</span>
-      <span class="cart-modal__product_price">price: 100.00u</span>
-      <span class="cart-modal__remove_product">❌</span>
+    <div class="cart-modal__product" *ngFor="let item of cart">
+      <span class="cart-modal__product_name">{{ item.name }}</span>
+      <span class="cart-modal__product_quantity">Quantity: {{ item.quantity }}</span>
+      <span class="cart-modal__product_price">price: {{ item.price }}u</span>
+      <span class="cart-modal__remove_product" (click)="removeItem(item)">❌</span>
     </div>
   </div>
   <div class="cart-modal__footer">
     <div class="cart-modal_prices">
-      <span class="cart-modal_total_price">Total: 1000.00</span>
-      <span class="cart-modal_dicount_price">Sub-total: 900.00</span>
+      <span class="cart-modal_total_price">Total: {{ total | number:'1.1-2' }}</span>
+      <span [ngStyle]="{'visibility': haveDiscount ? 'visible' : 'hidden'}" class="cart-modal_dicount_price">Sub-total:
+        {{ subTotal | number:'1.1-2' }}</span>
     </div>
     <div class="cart-modal_dicount">
       <label class="cart-modal_dicount_label" for="discount">Get 10% off, type: <b>"10OFF"</b></label>
-      <input class="cart-modal_dicount_input" type="text" name="discount" id="discount">
-      <button class="cart-modal_get_dicount_button">get discount!</button>
+      <input class="cart-modal_dicount_input" type="text" name="discount" id="discount" [(ngModel)]="discount">
+      <button class="cart-modal_get_dicount_button" (click)="getDiscount(discount)">get discount!</button>
     </div>
   </div>
 </div>
-<!--class="cart-modal"-->
