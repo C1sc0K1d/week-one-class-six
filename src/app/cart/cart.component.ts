@@ -9,6 +9,7 @@ import { Product } from '../utils/interfaces/product';
 })
 export class CartComponent implements OnInit {
 
+  // Variables
   seeModal: boolean = false;
 
   products: Product[] = [
@@ -26,8 +27,10 @@ export class CartComponent implements OnInit {
 
   constructor() { }
 
+  // Functions
   ngOnInit() : void { }
 
+  // Function to add aproduct to the cart, it checks if the product aready at the cart, if it is, just add to the quantity
   addProduct(product: Product) : void {
     let index = this.findIndex(product);
 
@@ -42,10 +45,12 @@ export class CartComponent implements OnInit {
     this.calculatePrice(this.cart);
   }
 
+  // Function to open the cart modal
   callModal() {
     this.seeModal = !this.seeModal;
   }
 
+  // Function to find the index of the product wanted 
   findIndex(product: Product) : number {
     let index = this.cart.findIndex(item => {      
       if (item.id == product.id) return true;
@@ -54,6 +59,7 @@ export class CartComponent implements OnInit {
     return index;
   }
 
+  // Function to calculate the price and the sub-price
   calculatePrice(cart: Product[]) : void {
     this.total = 0;
     for (let product of cart) {
