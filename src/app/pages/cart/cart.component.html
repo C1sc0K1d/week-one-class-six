@@ -1,6 +1,6 @@
 <div class="cart__component">
   <app-cart-modal [ngStyle]="{'visibility': seeModal ? 'visible' : 'hidden'}" (closeModalEvent)="callModal()"
-    [cart]="cart" [total]="total" (subtractTotalEvent)="calculatePrice($event)" [subTotal]="subTotal">
+    [cart]="cart">
   </app-cart-modal>
   <app-items *ngFor="let product of products" [product]="product" (addProductEvent)="addProduct($event)"></app-items>
   <div class="cart__shopping_cart_img_div" [ngClass]="{'notify': cart.length !== 0, 'not_notify': cart.length == 0}">
