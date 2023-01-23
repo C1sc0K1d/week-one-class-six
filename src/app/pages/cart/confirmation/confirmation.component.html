@@ -1,0 +1,27 @@
+<div class="confirmation__container">
+  <div>
+    <h1 style="margin: 50px auto; width: 95%;">Your order has been complete, soon you will be able charm people with
+      your songs</h1>
+  </div>
+  <div class="confirmation__products"
+    [ngStyle]="{'border': cart.length > 0 ? '1px solid white' : '1px solid transparent'}">
+    <div class="confirmation__product" *ngFor="let item of cart">
+      <img class="confirmation__product_image" src="{{ item.image }}" alt="{{ item.name }} image">
+      <span class="confirmation__product_name">{{ item.name }}</span>
+      <span class="confirmation__product_price">price: {{ item.price }}u</span>
+      <div>
+        <span class="confirmation__product_quantity">Quantity: {{ item.quantity }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="confirmation__footer">
+    <div class="confirmation__prices">
+      <span class="confirmation__total_price">{{ totalOrSubTotalText }}{{ subTotal | number:'1.2-2' }}</span>
+      <span [ngStyle]="{'visibility': haveDiscount ? 'visible' : 'hidden'}" class="confirmation__dicount_price">Total:
+        {{ total | number:'1.2-2' }}</span>
+      <span [ngStyle]="{'visibility': haveDiscount ? 'visible' : 'hidden'}" class="confirmation__total_price">Discount:
+        -{{ (subTotal - total) | number:'1.2-2' }}</span>
+    </div>
+  </div>
+  <button class="confirmation__go_back_buttom" (click)="goBack()">Go back</button>
+</div>

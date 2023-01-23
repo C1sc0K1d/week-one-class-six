@@ -1,0 +1,23 @@
+<div class="products-details__container">
+  <div class="products-details__image_container">
+    <img class="products-details__image" src="{{ product.image }}" alt="{{ product.name }} image">
+  </div>
+  <div class="products-details__informations">
+    <div style="display: flex; align-items: flex-end; justify-content: flex-end; width: 100%;">
+      <p class="products-details__close" (click)="goToHome()">X</p>
+    </div>
+    <h2 class="products-details__name">{{ product.name }}</h2>
+    <span class="products-details__text">
+      This {{ product.name }} is in excelent conditions, good sound quality, will last for generations if you take
+      good care. This is the only {{product.name}} type that we have, but is the best of the market.
+    </span>
+    <div style="display: flex;flex-direction: column;width: 40%; align-items: center;">
+      <label class="products-details__quantity_label" for="quantity">Quantity: </label>
+      <input min="1" max="10" class="products-details__quantity" type="number" name="quantity" id="quantity"
+        [(ngModel)]="quantity">
+    </div>
+    <span class="products-details__price">Price: {{ product.price | number: "1.2-2" }}</span>
+    <button (click)="addProduct(product)" class="products-details__add_buttom"
+      [disabled]="quantity > 10 || quantity < 1">Add to Cart!</button>
+  </div>
+</div>

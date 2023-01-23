@@ -1,0 +1,20 @@
+<div class="login__container">
+  <p style="font-size: 16px; font-weight: 600;">Login: </p>
+  <br>
+  <div style="display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: row;">
+    <button class="login__buttom" (click)="logIn('admin')">Admin</button>
+    <button class="login__buttom" (click)="logIn('fulano')">User</button>
+    <button class="login__buttom" (click)="logIn('login')">Logout</button>
+  </div>
+  <br>
+  <div style="margin: 20px;">
+    <label for="login">Login</label>
+    <br>
+    <input style="padding: 10px 15px; outline: none; border-radius: 5px;" type="text" name="login">
+  </div>
+  <div style="margin: 20px;">
+    <label for="password">Password</label>
+    <br>
+    <input style="padding: 10px 15px; outline: none; border-radius: 5px;" type="text" name="password">
+  </div>
+</div>

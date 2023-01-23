@@ -1,4 +1,7 @@
 <div class="header__container">
-  <span class="header__span">Cart 🛒</span>
-  <span class="header__span">Angular Fundamentals</span>
+  <span class="header__span">The Musical Cart 🛒 🎶</span>
+  <div class="cart__shopping_cart_img_div" [ngClass]="{'notify': cart.length !== 0, 'not_notify': cart.length == 0}"
+    [attr.items_qtt]="items_qtt">
+    <img (click)="callModal()" class="cart__shopping_cart_img" src="assets/icons/shopping-cart.svg" alt="shopping-cart">
+  </div>
 </div>

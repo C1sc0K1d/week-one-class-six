@@ -1,0 +1,8 @@
+<div class="items__container">
+  <span class="items__item_name" (click)="goToProduct(product.id || 0)">{{product.name}}</span>
+  <img src="{{product.image}}" alt="{{product.name}}" class="items__item_picture"
+    (click)="goToProduct(product.id || 0)">
+  <span class="items__item_price" (click)="goToProduct(product.id || 0)">Price:
+    {{product.price | number:'1.2-2'}}</span>
+  <button class="items__add_button" (click)="addProduct(product)">Add to Cart</button>
+</div>

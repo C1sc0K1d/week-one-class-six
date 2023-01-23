@@ -1,0 +1,44 @@
+<div class="checkout__container">
+  <div class="checkout__pay_method">
+    <label class="checkout__method_label" for="payMethod">Select your payment method</label>
+    <select #payMethod class="checkout__method_select" name="payMethod" id="payMethod"
+      (change)="selectMethod(payMethod.value)">
+      <option></option>
+      <option value="card">Card</option>
+      <option value="pix">Pix</option>
+      <option value="bitcoin">Bitcoin</option>
+    </select>
+  </div>
+
+
+  <div class="checkout__card_method" [ngStyle]="{'display' : paymentMethod === 'card' ? 'flex' : 'none'}">
+    <label class="checkout__card_method_label" for="cardNumber">Card Number: </label>
+    <input class="checkout__card_method_input" type="text" name="cardNumber">
+    <label class="checkout__card_method_label" for="ownerName">Card Owner: </label>
+    <input class="checkout__card_method_input" type="text" name="ownerName">
+    <div class="checkout__card_method_row">
+      <div style="width: 47%; display: flex; flex-direction: column; margin-right: auto;">
+        <label class="checkout__card_method_label" for="cvv">CVV: </label>
+        <input class="checkout__card_method_input" type="text" name="cvv">
+      </div>
+      <div style="width: 47%; display: flex; flex-direction: column; margin-left: auto;">
+        <label class="checkout__card_method_label" for="expirationDate">Card Expiration Date</label>
+        <input class="checkout__card_method_input" type="date" name="expirationDate">
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout__pix_method" [ngStyle]="{'display' : paymentMethod === 'pix' ? 'flex' : 'none'}">
+    <span class="checkout__pix_label">Pix code: </span>
+    <Span class="checkout__pix_code">AJHNDMN1-213UJHV3-1234KB3JK-4324H3B4JK</Span>
+  </div>
+
+  <div class="checkout__bitcoin_method" [ngStyle]="{'display' : paymentMethod === 'bitcoin' ? 'flex' : 'none'}">
+    <span class="checkout__btc_label">BTC account: </span>
+    <span class="checkout__btc_code">3HSDihbn56knjbn5VbjhkI8nklgJHhjbKh5</span>
+  </div>
+
+  <button (click)="goToConfirmation()" class="checkout__confirmation_button"
+    [disabled]="paymentMethod === ''">Confirm</button>
+
+</div>

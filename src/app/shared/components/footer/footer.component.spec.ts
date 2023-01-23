@@ -25,4 +25,14 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render footer text one', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.fp')?.textContent).toContain('Facilitação prosper 2');
+  });
+
+  it('should render footer text two', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.mb')?.textContent).toContain('Made by: Gabriel Calil');
+  });
 });

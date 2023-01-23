@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +9,11 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
+  // Functions
   ngOnInit() : void { }
 
+  // Open a new window to the angular page
+  goToUrl(): void {
+    window.open('https://angular.io', '_blank');
+  }
 }

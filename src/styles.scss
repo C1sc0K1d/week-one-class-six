@@ -7,8 +7,21 @@
   margin: 0;
   padding: 0;
   border: 0;
+  overflow: hidden;
   position: relative;
   box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 820px) {
+  * {
+    overflow: scroll;
+  }
 }
 
 app-header {
@@ -18,13 +31,12 @@ app-header {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 20;
+  z-index: 50;
   background-color: black;
 }
 
 body {
   padding-top: 50px;
-  padding-bottom: 60px;
 }
 
 .container {
@@ -35,7 +47,7 @@ app-footer {
   height: 60px;
   min-height: 60px;
   position: absolute;
-  bottom: -60;
+  bottom: 0;
   left: 0;
   right: 0;
   background-color: darkslateblue;

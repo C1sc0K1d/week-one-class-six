@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
@@ -14,7 +15,7 @@ export class ItemsComponent implements OnInit {
   // Output Events
   @Output() addProductEvent = new EventEmitter<Product>();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   // Functions
   ngOnInit() : void { }
@@ -22,6 +23,11 @@ export class ItemsComponent implements OnInit {
   // Function to add aproduct to the cart, calls the add product event
   addProduct(product: Product) : void {
     this.addProductEvent.emit(product);
+  }
+
+  // Go to the product page
+  goToProduct(id: number) : void {
+    this.router.navigate([ 'product-detail', id]);
   }
 
 }

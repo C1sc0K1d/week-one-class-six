@@ -1,6 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { CartModalComponent } from './shared/components/cart-modal/cart-modal.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { NavigatorComponent } from './shared/components/navigator/navigator.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -9,7 +13,11 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        CartModalComponent,
+        NavigatorComponent
       ],
     }).compileComponents();
   });
@@ -20,16 +28,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'class-six'`, () => {
+  it(`should have as title 'TheMusicalCart'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('class-six');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('class-six app is running!');
+    expect(app.title).toEqual('TheMusicalCart');
   });
 });

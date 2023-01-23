@@ -2,23 +2,31 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
-import { CartModalComponent } from "./cart-modal/cart-modal.component";
 
 import { CartComponent } from "./cart.component";
-import { ItemsComponent } from "./items/items.component";
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 const routes: Routes = [
 	{
 		path: '',
 		component: CartComponent
-	}
+	},
+	{
+		path: 'checkout',
+    component: CheckoutComponent
+	},
+	{
+		path: 'confirmation',
+    component: ConfirmationComponent
+  }
 ];
 
 @NgModule({
 	declarations: [
 		CartComponent,
-		ItemsComponent,
-		CartModalComponent
+  	CheckoutComponent,
+  	ConfirmationComponent
 	],
 	imports: [
 		CommonModule,
