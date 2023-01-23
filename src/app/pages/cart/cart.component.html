@@ -1,9 +1,39 @@
-<div class="cart__component">
-  <app-cart-modal [ngStyle]="{'visibility': seeModal ? 'visible' : 'hidden'}" (closeModalEvent)="callModal()"
-    [cart]="cart">
-  </app-cart-modal>
-  <app-items *ngFor="let product of products" [product]="product" (addProductEvent)="addProduct($event)"></app-items>
-  <div class="cart__shopping_cart_img_div" [ngClass]="{'notify': cart.length !== 0, 'not_notify': cart.length == 0}">
-    <img (click)="callModal()" class="cart__shopping_cart_img" src="assets/icons/shopping-cart.svg" alt="shopping-cart">
+<div class="cart__container" style="align-items: flex-start; padding: 35px 0 0 35px;"
+  [ngStyle]="{'display': cart.length > 0 ? 'none' : 'flex'}">
+  <h1 style="font-weight: bold; margin-bottom: 30px; color: white;">Cart</h1>
+  <h1 style="font-weight: bolder; margin-bottom: 10px; color: white;">There's no music here yet.</h1>
+  <span style="margin-bottom: 20px; color: white;">Add some instruments to your cart</span>
+  <button
+    style="padding: 15px 20px; background-color: black; color: white; border-radius: 5px; border: 1px solid white;"
+    (click)="goToPage('/home')">Add
+    instruments</button>
+</div>
+<div class="cart__container" [ngStyle]="{'display': cart.length > 0 ? 'flex' : 'none'}">
+  <div class="cart__products"
+    [ngStyle]="{'border-bottom': cart.length > 0 ? '1px solid white' : '1px solid transparent'}">
+    <div class="cart__product" *ngFor="let item of cart">
+      <img class="cart__product_image" src="{{ item.image }}" alt="{{ item.name }} image">
+      <span class="cart__product_name">{{ item.name }}</span>
+      <span class="cart__product_price">price: {{ item.price }}u</span>
+      <div>
+        <span class="cart__remove_product" (click)="removeItem(item)">➖</span>
+        <span class="cart__product_quantity">Quantity: {{ item.quantity }}</span>
+        <span class="cart__add_product" (click)="addItem(item)">➕</span>
+      </div>
+      <span class="cart__remove_product" (click)="deleteItem(item)">❌</span>
+    </div>
+  </div>
+  <div class="cart__footer">
+    <div class="cart__prices">
+      <span class="cart__total_price">{{ totalOrSubTotalText }}{{ subTotal | number:'1.2-2' }}</span>
+      <span [ngStyle]="{'visibility': haveDiscount ? 'visible' : 'hidden'}" class="cart__dicount_price">Total:
+        {{ total | number:'1.2-2' }}</span>
+    </div>
+    <div class="cart__dicount">
+      <label class="cart__dicount_label" for="discount">Get 10% off, type: <b>"10OFF"</b></label>
+      <input class="cart__dicount_input" type="text" name="discount" id="discount" [(ngModel)]="discount">
+      <button class="cart__get_dicount_button" (click)="getDiscount(discount)">get discount!</button>
+      <button class="cart__get_Checkout_button" (click)="goToPage('/cart/checkout')">Checkout!</button>
+    </div>
   </div>
 </div>

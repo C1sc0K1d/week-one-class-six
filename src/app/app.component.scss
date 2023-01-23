@@ -1,1 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 5px 60px 0px;
+}
 
+app-navigator {
+  width: 10%;
+  min-width: 10%;
+}
+
+.navigator_mobile_in,
+.navigator_mobile_out {
+  width: 10%;
+  min-width: 10%;
+}
+
+.router {
+  width: 90%;
+  min-width: 90%;
+}
+
+.cart__mobile_caller_in,
+.cart__mobile_caller_out {
+  position: fixed;
+  width: 28px;
+  min-width: auto;
+  min-height: auto;
+  height: 28px;
+  background-color: white;
+  display: hidden;
+  visibility: hidden;
+  text-align: center;
+  padding: 3px;
+  border-radius: 2px;
+  z-index: 40;
+  top: 60px;
+}
+
+app-cart-modal {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  background-color: rgba(000, 000, 000, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  z-index: 40;
+}
+
+@media screen and (max-width: 912px) {
+  .container {
+    padding-right: 0;
+  }
+
+  .navigator_mobile_in {
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+  }
+
+  .navigator_mobile_out {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 50%;
+    z-index: 40;
+  }
+
+  .router {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .cart__mobile_caller_in {
+    display: block;
+    visibility: visible;
+    left: 0px;
+  }
+
+  .cart__mobile_caller_out {
+    display: block;
+    visibility: visible;
+    left: 50%;
+  }
+}

@@ -1,7 +1,16 @@
 <app-header></app-header>
 
 <div class="container">
-  <router-outlet></router-outlet>
+  <app-cart-modal [ngStyle]="{'visibility': seeModal ? 'visible' : 'hidden'}" [haveDiscount]="seeModal && haveDiscount">
+  </app-cart-modal>
+  <app-navigator (callModalEvent)="callMenu()"
+    [ngClass]="{'navigator_mobile_in' : !menu, 'navigator_mobile_out':  menu ? 'block' : 'none' }">
+  </app-navigator>
+  <span [ngClass]="{'cart__mobile_caller_in': !menu, 'cart__mobile_caller_out': menu}"
+    (click)="callMenu()">&#9776;</span>
+  <div class="router">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
 <app-footer></app-footer>

@@ -1,8 +1,6 @@
 * {
   min-height: auto;
-  min-height: auto;
   height: auto;
-  width: auto;
   cursor: default;
 }
 
@@ -22,14 +20,20 @@
 .items__item_name {
   font-size: 21px;
   color: white;
+  cursor: pointer;
 }
 
 .items__item_picture {
-  font-size: 38px;
+  width: 40%;
+  height: 45%;
+  min-width: auto;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .items__item_price {
   color: white;
+  cursor: pointer;
 }
 
 .items__add_button {

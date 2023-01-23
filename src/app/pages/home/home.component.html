@@ -1,0 +1,10 @@
+<div class="home__container">
+  <div style="height: 80%; width: 100%; color: white; font-weight: bolder;">
+    <img class="home__banner_image" src="assets/imgs/background.jpg" alt="Varius instruments image">
+    <span class="home__banner_tittle">Welcome To Musical Cart, make your cart loud! Add some instruments! ;-)</span>
+  </div>
+
+  <div class="home__component">
+    <app-items *ngFor="let product of products" [product]="product" (addProductEvent)="addProduct($event)"></app-items>
+  </div>
+</div>

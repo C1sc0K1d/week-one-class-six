@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
-import { HeaderComponent } from './shared/components/header/header.component';
+import { CartModule } from './pages/cart/cart.module';
 import { SharedModule } from './shared/shared.module';
+import { LoginModule } from './pages/login/login.module';
 
 @NgModule({
   declarations: [			
@@ -14,7 +14,9 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    CartModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,26 +1,24 @@
 <div class="cart-modal__container">
-  <span style="cursor: pointer; width: 12px; margin-right: 10px;" (click)="closeModal()">✖️</span>
+  <span style="cursor: pointer; width: 12px; margin-right: 10px; color: white; font-weight: bolder;"
+    (click)="closeModal()">X</span>
   <div class="cart-modal__products">
     <div class="cart-modal__product" *ngFor="let item of cart">
+      <img class="cart-modal__product_image" src="{{ item.image }}" alt="{{ item.name }} image">
       <span class="cart-modal__product_name">{{ item.name }}</span>
-      <span class="cart-modal__product_quantity">Quantity: {{ item.quantity }}</span>
       <span class="cart-modal__product_price">price: {{ item.price }}u</span>
       <div>
         <span class="cart-modal__remove_product" (click)="removeItem(item)">❌</span>
+        <span class="cart-modal__product_quantity">Quantity: {{ item.quantity }}</span>
         <span class="cart-modal__add_product" (click)="addItem(item)">➕</span>
       </div>
     </div>
   </div>
   <div class="cart-modal__footer">
     <div class="cart-modal_prices">
-      <span class="cart-modal_total_price">{{ totalOrSubTotalText }}{{ subTotal | number:'1.1-2' }}</span>
+      <span class="cart-modal_total_price">{{ totalOrSubTotalText }}{{ subTotal | number:'1.2-2' }}</span>
       <span [ngStyle]="{'visibility': haveDiscount ? 'visible' : 'hidden'}" class="cart-modal_dicount_price">Total:
-        {{ total | number:'1.1-2' }}</span>
+        {{ total | number:'1.2-2' }}</span>
     </div>
-    <div class="cart-modal_dicount">
-      <label class="cart-modal_dicount_label" for="discount">Get 10% off, type: <b>"10OFF"</b></label>
-      <input class="cart-modal_dicount_input" type="text" name="discount" id="discount" [(ngModel)]="discount">
-      <button class="cart-modal_get_dicount_button" (click)="getDiscount(discount)">get discount!</button>
-    </div>
+    <button class="cart-modal_get_dicount_button" (click)="goToPage('/cart')">To Cart!</button>
   </div>
 </div>
