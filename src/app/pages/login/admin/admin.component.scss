@@ -1,0 +1,40 @@
+* {
+  min-width: auto;
+  min-height: auto;
+  height: auto;
+  color: white;
+}
+
+.admin__container {
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  background-color: #483d8b;
+  padding: 15px;
+}
+
+.admin__add_instrument_form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin__inputs {
+  width: 45%;
+  margin: 10px 0;
+}
+
+.admin__label {
+  font-size: 0.9em;
+  margin: 3px 0;
+}
+
+.admin__input {
+  padding: 10px 8px;
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+}

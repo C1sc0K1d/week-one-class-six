@@ -6,7 +6,7 @@ import { NavigatorComponent } from './components/navigator/navigator.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CartModalComponent } from './components/cart-modal/cart-modal.component';
 import { FormsModule } from '@angular/forms';
-
+import { MessagesComponent } from './components/messages/messages.component';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     NavigatorComponent,
     NotFoundComponent,
-		CartModalComponent
+		CartModalComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     NavigatorComponent,
     NotFoundComponent,
-		CartModalComponent
+		CartModalComponent,
+    MessagesComponent
   ]
 })
 export class SharedModule { }

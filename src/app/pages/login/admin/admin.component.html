@@ -1,1 +1,21 @@
-<p>admin works!</p>
+<div class="admin__container">
+  <form class="admin__add_instrument_form" [formGroup]="instrumentForm">
+    <h2>Add a instrument: </h2>
+    <div class="admin__inputs">
+      <label class="admin__label" for="instrumentName">Instrument Name: </label>
+      <input formControlName="name" class="admin__input" type="text" id="instrumentName" name="instrumentName" />
+    </div>
+    <div class="admin__inputs">
+      <label class="admin__label" for="insturmentImage">Image url: </label>
+      <input formControlName="image" class="admin__input" type="text" id="insturmentImage" name="insturmentImage" />
+    </div>
+    <div class="admin__inputs">
+      <label class="admin__label" for="instrumentPrice">Instrument price: </label>
+      <input formControlName="price" class="admin__input" type="number" id="instrumentPrice" name="instrumentPrice" />
+    </div>
+    <div class="admin__inputs">
+      <label class="admin__label" for="instrumentType">Instrument type: </label>
+      <input formControlName="type" class="admin__input" type="text" id="instrumentType" name="instrumentType">
+    </div>
+  </form>
+</div>

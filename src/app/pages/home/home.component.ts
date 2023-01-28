@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/core/services/cart.service';
+import { InstrumentService } from 'src/app/core/services/instrument.service';
 
 import { Product } from 'src/app/shared/interfaces/product';
 
@@ -16,11 +17,18 @@ export class HomeComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private cartService: CartService) { }  
+  constructor(private cartService: CartService, private instrumentService: InstrumentService) { }  
 
   // Functions
-  ngOnInit() : void { 
-    this.products = this.cartService.getProducts();
+  ngOnInit() : void {
+    
+    // Get instruments from the database
+    this.instrumentService.getAllInstruments().subscribe(instrument => {
+      this.cartService.setProducts(instrument.instruments);
+      this.products = this.cartService.getProducts();
+    });
+
+    // Filter the products using the service
     this.cartService.sendFilter.subscribe(filter => {      
       this.products = this.cartService.filterProduct(this.cartService.getProducts(), filter);
     });

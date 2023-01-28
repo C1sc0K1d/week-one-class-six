@@ -1,7 +1,7 @@
 <div class="confirmation__container">
   <div>
-    <h1 style="margin: 50px auto; width: 95%;">Your order has been complete, soon you will be able charm people with
-      your songs</h1>
+    <h1 style="margin: 50px auto; width: 95%;">Your order is almost complete, soon you will be able charm people with
+      your songs!! Take your music home</h1>
   </div>
   <div class="confirmation__products"
     [ngStyle]="{'border': cart.length > 0 ? '1px solid white' : '1px solid transparent'}">
@@ -23,5 +23,8 @@
         -{{ (subTotal - total) | number:'1.2-2' }}</span>
     </div>
   </div>
-  <button class="confirmation__go_back_buttom" (click)="goBack()">Go back</button>
+  <div class="confirmation__buttons">
+    <button class="confirmation__clear_cart_buttom" (click)="clearCart()">Stop musical!</button>
+    <button class="confirmation__go_back_buttom" (click)="goBack()">Take music home!!</button>
+  </div>
 </div>
