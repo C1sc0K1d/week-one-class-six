@@ -1,0 +1,9 @@
+<div class="messages__container" *ngIf="messageService.messages.length">
+  <h2 class="messages__h2">Messages: </h2>
+  <div *ngFor="let message of messageService.messages" class="messages__message"> {{message}} </div>
+  <div class="messages__button_div">
+    <button *ngIf="messageService.isClearCart" class="messages__button_out" (click)="messageService.clearCart()">Clear
+      cart</button>
+    <button class="messages__button" (click)="messageService.clear()">Clear messages</button>
+  </div>
+</div>

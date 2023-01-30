@@ -23,8 +23,6 @@ export class CheckoutComponent implements OnInit {
 
   // Select the payment method
   selectMethod(method: string): void {
-    console.log(method);
-    
     this.paymentMethod = method;
   }
 

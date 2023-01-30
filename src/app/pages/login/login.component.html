@@ -1,20 +1,30 @@
-<div class="login__container">
-  <p style="font-size: 16px; font-weight: 600;">Login: </p>
-  <br>
-  <div style="display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: row;">
-    <button class="login__buttom" (click)="logIn('admin')">Admin</button>
-    <button class="login__buttom" (click)="logIn('fulano')">User</button>
-    <button class="login__buttom" (click)="logIn('login')">Logout</button>
-  </div>
+<form class="login__container" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <p style="font-size: 16px; font-weight: 600; cursor: default;">Login: </p>
   <br>
   <div style="margin: 20px;">
     <label for="login">Login</label>
     <br>
-    <input style="padding: 10px 15px; outline: none; border-radius: 5px;" type="text" name="login">
+    <input style="padding: 10px 15px; outline: none; border-radius: 5px;" type="text" name="login"
+      formControlName="userName">
   </div>
   <div style="margin: 20px;">
     <label for="password">Password</label>
     <br>
-    <input style="padding: 10px 15px; outline: none; border-radius: 5px;" type="text" name="password">
+    <input style="padding: 10px 15px; outline: none; border-radius: 5px;" type="text" name="password"
+      formControlName="password">
   </div>
-</div>
+  <br>
+  <div
+    style="display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: row; margin: 0 20px;">
+    <button type="submit" class="login__buttom" [disabled]="!userForm.valid" style="margin-left: 0;">Login</button>
+    <button type="button" class="login__buttom" (click)="logOut()">Log out</button>
+  </div>
+  <div>
+    <br>
+    <br>
+    <span class="login__signin" (click)="goToSignIn()">Don't have a user yet, come make some noise with us!!</span>
+    <br>
+    <br>
+    <span *ngIf="loginService.getIsAdmin()" class="login__signin" (click)="goToAdminPage()">Administration</span>
+  </div>
+</form>

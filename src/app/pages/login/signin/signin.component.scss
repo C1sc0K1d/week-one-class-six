@@ -1,0 +1,77 @@
+* {
+  min-width: auto;
+  min-height: auto;
+  height: auto;
+  color: white;
+  overflow: visible;
+}
+
+.user__container {
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  background-color: #483d8b;
+  padding: 25px;
+  overflow: scroll;
+}
+
+.user__add_user_form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto 30px auto;
+  border-bottom: 1px solid white;
+}
+
+.user__inputs {
+  width: 45%;
+  margin: 10px auto;
+}
+
+.user__label {
+  font-size: 0.9em;
+  margin: 5px 0;
+  cursor: default;
+}
+
+.user__input {
+  padding: 10px 8px;
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+  border-radius: 3px;
+}
+
+.user__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user__clear_button,
+.user__add_button {
+  width: 40%;
+  color: white;
+  padding: 15px 10px;
+  border-radius: 5px;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.user__clear_button {
+  background-color: red;
+}
+
+.user__add_button {
+  background-color: green;
+}
+
+.user__add_button:disabled {
+  background-color: rgb(9, 56, 9);
+  cursor: default;
+}

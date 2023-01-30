@@ -103,8 +103,28 @@
   align-items: flex-start;
 }
 
+.confirmation__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+}
+
+.confirmation__clear_cart_buttom {
+  width: 45%;
+  padding: 15px 0;
+  margin: 50px auto;
+  border-radius: 5px;
+  font-weight: bolder;
+  font-size: 16px;
+  color: white;
+  background-color: red;
+}
+
+
 .confirmation__go_back_buttom {
-  width: 80%;
+  width: 45%;
   padding: 15px 0;
   margin: 50px auto;
   border-radius: 5px;

@@ -2,6 +2,8 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
+import { AdminGuard } from "src/app/core/guards/admin.guard";
+import { UserGuard } from "src/app/core/guards/user.guard";
 
 import { CartComponent } from "./cart.component";
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -14,11 +16,13 @@ const routes: Routes = [
 	},
 	{
 		path: 'checkout',
-    component: CheckoutComponent
+    component: CheckoutComponent,
+		canActivate: [UserGuard]
 	},
 	{
 		path: 'confirmation',
-    component: ConfirmationComponent
+    component: ConfirmationComponent,
+		canActivate: [UserGuard]
   }
 ];
 

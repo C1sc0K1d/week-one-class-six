@@ -22,3 +22,17 @@
   cursor: pointer;
   text-align: center;
 }
+
+.login__signin {
+  font-size: large;
+  font-weight: bold;
+  color: #483d8b;
+  text-decoration: underline;
+  text-shadow: 1px black;
+  cursor: pointer;
+}
+
+.login__buttom:disabled {
+  cursor: default;
+  background-color: gray;
+}

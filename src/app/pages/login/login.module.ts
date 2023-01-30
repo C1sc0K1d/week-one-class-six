@@ -1,12 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 
 import { LoginComponent } from "./login.component";
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
-import { UserGuard } from "src/app/core/guards/user.guard";
+import { SigninComponent } from "./signin/signin.component";
 import { AdminGuard } from "src/app/core/guards/admin.guard";
 
 const routes: Routes = [
@@ -19,10 +19,9 @@ const routes: Routes = [
     component: AdminComponent,
 		canActivate : [AdminGuard]
 	},
-  {
-    path: 'user',
-		component: UserComponent,
-		canActivate : [UserGuard]
+	{
+		path:'signin',
+		component: SigninComponent
 	}
 ];
 
@@ -30,12 +29,14 @@ const routes: Routes = [
 	declarations: [
 		LoginComponent,
 		AdminComponent,
-		UserComponent
+		UserComponent,
+		SigninComponent
 	],
 	imports: [
 		CommonModule,
 		RouterModule.forChild(routes),
-		FormsModule 
+		FormsModule,
+		ReactiveFormsModule
 	],
 	exports: [
 		RouterModule

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'src/app/core/helpers/message.service';
 import { CartService } from 'src/app/core/services/cart.service';
 import { Product } from 'src/app/shared/interfaces/product';
 
@@ -24,7 +25,7 @@ export class ConfirmationComponent implements OnInit {
 
  totalOrSubTotalText: string = 'Total: ';
 
- constructor(private cartService: CartService, private router: Router) { }
+ constructor(private cartService: CartService, private router: Router, private messageService: MessageService) { }
 
  // Functions
  ngOnInit() : void {
@@ -51,6 +52,12 @@ export class ConfirmationComponent implements OnInit {
  goBack() {
   this.router.navigate(['/home']);
   this.cartService.setCart([]);
-}
+  this.messageService.add("Thanks for buying with us!! Soon your instruments will reach you!");
+  }
+
+  clearCart() {
+    this.messageService.add("Wanna clear your cart?");
+    this.messageService.isClearCart = true;
+  }
 
 }
