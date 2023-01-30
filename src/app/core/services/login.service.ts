@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { User } from 'src/app/shared/interfaces/user';
-import { UserResponse } from 'src/app/shared/responses/user-response';
+import { UserListResponse, UserResponse } from 'src/app/shared/responses/user-response';
 import { environment } from 'src/environments/environment';
 import { MessageService } from '../helpers/message.service';
 
@@ -25,7 +24,7 @@ export class LoginService {
 
   private isAdmin: boolean = false;
 
-  constructor(private router: Router, private http: HttpClient,  private messageService: MessageService) { }  
+  constructor(private http: HttpClient,  private messageService: MessageService) { }  
 
   // Functions
   // Return the user variable
@@ -46,12 +45,19 @@ export class LoginService {
 
   // Login user
   public login(user: User) : Observable<UserResponse> {
-    console.log(user);
-    
     return this.http.post<UserResponse>(this.url + '/user/login', user).pipe(tap((loggedIn: UserResponse) => this.checkUser(loggedIn.user)), catchError(this.handleError<UserResponse>('login')));
   }
+  
+  public getUsers() : Observable<UserListResponse> {
+    return this.http.get<UserListResponse>(this.url + '/user').pipe(tap(), catchError(this.handleError<UserListResponse>('getUsers')));
+  }
 
-  public createUser(user: User): Observable<UserResponse>{return this.http.post<UserResponse>(this.url + '/user/addUser', user).pipe(tap(), catchError(this.handleError<UserResponse>('createUser')));}
+  public deleteUser(id: number) : Observable<void> {
+    return this.http.delete<void>(this.url + `/user/delete/${id}`).pipe(tap(), catchError(this.handleError<void>('deleteUser')));
+  }
+
+  public createUser(user: User): Observable<UserResponse>{return this.http.post<UserResponse>(this.url + '/user/addUser', user).pipe(tap(), catchError(this.handleError<UserResponse>('createUser')));
+  }
 
   // Check what kind user is logging in and set the user name
   public checkUser(user: User) : void {
@@ -63,7 +69,7 @@ export class LoginService {
 
     private handleError<T>(operation: string, result?: T): any {
       return(error: any): Observable<T> => {
-        console.error(error.error.message);
+        console.error(error);
         this.log(`${operation} failed: ${error.error.message}`);
         return of(result as T);
       };

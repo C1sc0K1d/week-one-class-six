@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   cart: Product[] = []
 
   products: Product[] = [];
+  filteredProducts: Product[] = [];
+
+  searcher: string = '';
 
   constructor(private cartService: CartService, private instrumentService: InstrumentService) { }  
 
@@ -25,7 +28,7 @@ export class HomeComponent implements OnInit {
     // Get instruments from the database
     this.instrumentService.getAllInstruments().subscribe(instrument => {
       this.cartService.setProducts(instrument.instruments);
-      this.products = this.cartService.getProducts();
+       this.filteredProducts = this.products = this.cartService.getProducts();
     });
 
     // Filter the products using the service
@@ -40,4 +43,16 @@ export class HomeComponent implements OnInit {
     this.cart = this.cartService.addProduct(product);
   }
 
+  filterByValue(array: any[], string: string): void {
+    console.log();
+    this.filteredProducts = this.products;
+    this.filteredProducts = array.filter(function(obj) {
+      for (let key in obj) {
+        if (obj.hasOwnProperty(key) && obj[key]?.toString().toLowerCase().includes(string.toLowerCase())) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }
 }

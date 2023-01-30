@@ -6,9 +6,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./login.component";
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
-import { UserGuard } from "src/app/core/guards/user.guard";
-import { AdminGuard } from "src/app/core/guards/admin.guard";
 import { SigninComponent } from "./signin/signin.component";
+import { AdminGuard } from "src/app/core/guards/admin.guard";
 
 const routes: Routes = [
 	{
@@ -18,12 +17,7 @@ const routes: Routes = [
 	{
     path: 'admin',
     component: AdminComponent,
-		//canActivate : [AdminGuard]
-	},
-  {
-    path: 'user',
-		component: UserComponent,
-		canActivate : [UserGuard]
+		canActivate : [AdminGuard]
 	},
 	{
 		path:'signin',

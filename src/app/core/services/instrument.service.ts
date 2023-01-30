@@ -16,7 +16,6 @@ export class InstrumentService {
       'Content-Type': 'application/json' })
   };
 
-
   constructor(private http: HttpClient,  private messageService: MessageService) { }
 
   public getAllInstruments(): Observable<ProductListResponse> {
@@ -24,14 +23,13 @@ export class InstrumentService {
   }
 
   public addInstrument(product: Product): Observable<ProductResponse> {
-    return this.http.post<ProductResponse>(this.url + "instrument/add", product).pipe(tap((newInstrument: ProductResponse) => this.log(`Instrumet ${newInstrument.instrument.name} ready to make some noisy!!`)), catchError(this.handleError<ProductResponse>('addInstrument')));
+    return this.http.post<ProductResponse>(this.url + "/instrument/add", product).pipe(tap((newInstrument: ProductResponse) => this.log(`Instrumet ${newInstrument.instrument.name} ready to make some noisy!!`)), catchError(this.handleError<ProductResponse>('addInstrument')));
   }
 
   private handleError<T>(operation: string, result?: T): any {
     return(error: any): Observable<T> => {
-      console.error(error.error.message);
-      alert(error.error.message)
-      this.log(`${operation} failed: ${error.message}`);
+      console.error(error);
+      this.log(`${operation} failed: ${error.error.message}`);
       return of(result as T);
     };
   }

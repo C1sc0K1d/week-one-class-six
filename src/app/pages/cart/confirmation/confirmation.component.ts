@@ -52,11 +52,12 @@ export class ConfirmationComponent implements OnInit {
  goBack() {
   this.router.navigate(['/home']);
   this.cartService.setCart([]);
-}
+  this.messageService.add("Thanks for buying with us!! Soon your instruments will reach you!");
+  }
 
-clearCart() {
-  this.messageService.add("Wanna clear your cart?");
-  this.messageService.isClearCart = true;
-}
+  clearCart() {
+    this.messageService.add("Wanna clear your cart?");
+    this.messageService.isClearCart = true;
+  }
 
 }

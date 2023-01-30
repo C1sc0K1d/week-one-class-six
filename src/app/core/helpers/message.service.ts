@@ -13,8 +13,10 @@ export class MessageService {
 
   constructor(private cartService: CartService, private router: Router) {}
 
-  add(message: string): void {
+  async add(message: string): Promise<void> {
     this.messages.push(message);
+    await new Promise(f => setTimeout(f, 4000));
+    this.clear();
   }
 
   clear(): void {

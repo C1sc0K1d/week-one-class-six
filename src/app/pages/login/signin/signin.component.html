@@ -1,1 +1,17 @@
-<p>signin works!</p>
+<div class="user__container">
+  <form class="user__add_user_form" [formGroup]="userForm" (ngSubmit)="newUser()">
+    <h2 style="cursor: default;">Create Account!! </h2>
+    <div class="user__inputs">
+      <label class="user__label" for="userName">Your User Name </label>
+      <input formControlName="userName" class="user__input" type="text" id="userName" name="userName" />
+    </div>
+    <div class="user__inputs">
+      <label class="user__label" for="userPassword">Your Password </label>
+      <input formControlName="password" class="user__input" type="text" id="userPassword" name="userPassword" />
+    </div>
+    <div class="user__buttons">
+      <button class="user__clear_button" type="button" (click)="clearUserForm()">Clear Informations</button> <button
+        class="user__add_button" type="submit" [disabled]="!userForm.valid">Rock With Us!!</button>
+    </div>
+  </form>
+</div>

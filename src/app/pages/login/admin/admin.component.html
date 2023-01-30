@@ -1,6 +1,6 @@
 <div class="admin__container">
-  <form class="admin__add_instrument_form" [formGroup]="instrumentForm">
-    <h2>Add a instrument: </h2>
+  <form class="admin__add_instrument_form" [formGroup]="instrumentForm" (ngSubmit)="addInstrument()">
+    <h2 style="cursor: default;">Add a instrument: </h2>
     <div class="admin__inputs">
       <label class="admin__label" for="instrumentName">Instrument Name: </label>
       <input formControlName="name" class="admin__input" type="text" id="instrumentName" name="instrumentName" />
@@ -17,5 +17,33 @@
       <label class="admin__label" for="instrumentType">Instrument type: </label>
       <input formControlName="type" class="admin__input" type="text" id="instrumentType" name="instrumentType">
     </div>
+    <div class="admin__buttons">
+      <button class="admin__clear_button" type="button" (click)="clearInstrumentForm()">Clear Inputs</button> <button
+        class="admin__add_button" type="submit" [disabled]="!instrumentForm.valid">Add Instrument</button>
+    </div>
   </form>
+  <br />
+  <form class="admin__add_instrument_form" [formGroup]="adminForm" (ngSubmit)="newAdmin()">
+    <h2 style="cursor: default;">Add a Admin: </h2>
+    <div class="admin__inputs">
+      <label class="admin__label" for="adminName">Admin Name: </label>
+      <input formControlName="userName" class="admin__input" type="text" id="adminName" name="adminName" />
+    </div>
+    <div class="admin__inputs">
+      <label class="admin__label" for="adminPassword">Admin Password: </label>
+      <input formControlName="password" class="admin__input" type="text" id="adminPassword" name="adminPassword" />
+    </div>
+    <div class="admin__buttons">
+      <button class="admin__clear_button" type="button" (click)="clearAdminForm()">Clear Inputs</button> <button
+        class="admin__add_button" type="submit" [disabled]="!adminForm.valid">Create Admin</button>
+    </div>
+  </form>
+  <br>
+  <br>
+  <div *ngFor="let user of users" class="admin__user_container">
+    <span class="admin__user_info">Name: {{ user.userName }}</span>
+    <span class="admin__user_info">Password: {{ user.password }}</span>
+    <span class="admin__user_info">Is administrator: {{ user.isAdmin }}</span>
+    <button class="admin__user_delete" (click)="deleteUser(user.id || 0, user.userName)">delete</button>
+  </div>
 </div>

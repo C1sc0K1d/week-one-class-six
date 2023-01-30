@@ -175,10 +175,7 @@ export class CartService {
 
   // Delete a item from the cart
   public deleteItem(product: Product) : Product[] {
-    
-    let index = this.findIndex(product);
-
-    this.cart.splice(index, 1);
+    this.cart.splice(this.findIndex(product), 1);
 
     this.calculatePrice(this.cart);
     this.sendCartObject.emit(this.cart);
