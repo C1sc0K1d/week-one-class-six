@@ -14,7 +14,8 @@ export class AdminGuard implements CanActivate {
   constructor(private loginService : LoginService, private router: Router, private messageService: MessageService, private auth: AuthTokenInterceptor) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if (this.loginService.getIsAdmin() && this.auth) return true;
+    this.auth.token = localStorage.getItem('authToken');
+    if (this.loginService.getIsAdmin() && this.auth.token) return true;
     this.messageService.add("You must be a admin to enter here");
     this.router.navigate(['/home']);
     return false;

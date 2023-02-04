@@ -6,7 +6,7 @@
   overflow: visible;
 }
 
-.user__container {
+.signin__container {
   min-width: 100%;
   min-height: 100%;
   height: 100%;
@@ -15,7 +15,7 @@
   overflow: scroll;
 }
 
-.user__add_user_form {
+.signin__add_user_form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -26,18 +26,35 @@
   border-bottom: 1px solid white;
 }
 
-.user__inputs {
+.signin__inputs {
   width: 45%;
   margin: 10px auto;
 }
 
-.user__label {
+.signin__inputs_checkbox {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.signin__input_checkbox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.signin__label {
   font-size: 0.9em;
   margin: 5px 0;
   cursor: default;
 }
 
-.user__input {
+.signin__input {
   padding: 10px 8px;
   color: black;
   font-size: 1em;
@@ -46,15 +63,15 @@
   border-radius: 3px;
 }
 
-.user__buttons {
+.signin__buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.user__clear_button,
-.user__add_button {
+.signin__clear_button,
+.signin__add_button {
   width: 40%;
   color: white;
   padding: 15px 10px;
@@ -63,15 +80,15 @@
   cursor: pointer;
 }
 
-.user__clear_button {
+.signin__clear_button {
   background-color: red;
 }
 
-.user__add_button {
+.signin__add_button {
   background-color: green;
 }
 
-.user__add_button:disabled {
+.signin__add_button:disabled {
   background-color: rgb(9, 56, 9);
   cursor: default;
 }

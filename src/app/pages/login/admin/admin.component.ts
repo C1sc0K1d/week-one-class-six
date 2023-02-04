@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { MessageService } from 'src/app/core/helpers/message.service';
 import { InstrumentService } from 'src/app/core/services/instrument.service';
 import { LoginService } from 'src/app/core/services/login.service';
@@ -26,7 +27,7 @@ export class AdminComponent implements OnInit {
 
   adminForm: FormGroup =  new FormGroup({});
 
-  constructor(private fb: FormBuilder, private messageService: MessageService, private loginService: LoginService, private instrumentService: InstrumentService) { }
+  constructor(private fb: FormBuilder, private messageService: MessageService, private loginService: LoginService, private instrumentService: InstrumentService, private ngxService: NgxUiLoaderService) { }
 
   ngOnInit() : void {
     this.instrumentForm = this.fb.group({
@@ -45,10 +46,14 @@ export class AdminComponent implements OnInit {
     this.getUsers();
   }
 
-  addInstrument() : void {    
+  addInstrument() : void {
+    this.ngxService.start();
     this.instrumentForm.value.name = (this.instrumentForm.value.name[0].toUpperCase() + this.instrumentForm.value.name.substring(1).toLowerCase());    
     this.instrument = this.instrumentForm.value;
-    this.instrumentService.addInstrument(this.instrument).subscribe(() => this.instrumentForm.reset());
+    this.instrumentService.addInstrument(this.instrument).subscribe(() => {
+      this.instrumentForm.reset();
+      this.ngxService.stop();
+    });
   }
 
   clearInstrumentForm() : void {
@@ -56,11 +61,13 @@ export class AdminComponent implements OnInit {
   }
 
   newAdmin() : void {
+    this.ngxService.start();
     this.user = this.adminForm.value;
     this.loginService.createUser(this.user).subscribe(response => {
-      this.messageService.add('Admin ' + response.user.userName +' successfully created');
       this.users.push(response.user);
       this.adminForm.reset();
+      this.ngxService.stop();
+      this.messageService.add('Admin ' + response.user.userName +' successfully created');
     });
   }
 
@@ -69,13 +76,19 @@ export class AdminComponent implements OnInit {
   }
 
   getUsers() : void {
-    this.loginService.getUsers().subscribe(response => this.users = response.users)
+    this.ngxService.start();
+    this.loginService.getUsers().subscribe(response => {
+      this.users = response.users
+      this.ngxService.stop();
+    });
   }
 
   deleteUser(id: number, name: string) : void {
+    this.ngxService.start();
     this.loginService.deleteUser(id).subscribe(() => {
-      this.messageService.add(`User ${name} deleted!`)
       this.users.splice(this.findIndex(id), 1);
+      this.ngxService.stop();
+      this.messageService.add(`User ${name} deleted!`);
     });
   }
 

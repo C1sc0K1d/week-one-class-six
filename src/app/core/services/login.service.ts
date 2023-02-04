@@ -28,12 +28,18 @@ export class LoginService {
 
   // Functions
   // Return the user variable
-  public getUser() { return this.user; }
+  public getUser() { 
+    this.user = localStorage.getItem('userName') || 'login';
+    return this.user; 
+  }
 
   // Set the user variable
   public setUser(user: string) { this.user = user; }
 
-  public getIsAdmin() { return this.isAdmin; }
+  public getIsAdmin() {
+    this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+    return this.isAdmin; 
+  }
 
   public setIsAdmin(isAdmin: boolean) { this.isAdmin = isAdmin}
 
@@ -56,7 +62,12 @@ export class LoginService {
     return this.http.delete<void>(this.url + `/user/delete/${id}`).pipe(tap(), catchError(this.handleError<void>('deleteUser')));
   }
 
-  public createUser(user: User): Observable<UserResponse>{return this.http.post<UserResponse>(this.url + '/user/addUser', user).pipe(tap(), catchError(this.handleError<UserResponse>('createUser')));
+  public createUser(user: User): Observable<UserResponse>{
+    return this.http.post<UserResponse>(this.url + '/user/addUser', user).pipe(tap(), catchError(this.handleError<UserResponse>('createUser')));
+  }
+
+  public updateUser(user: User): Observable<UserResponse> {
+    return this.http.put<UserResponse>(this.url + '/user/update', user).pipe(tap(), catchError(this.handleError<UserResponse>('updateUser')));
   }
 
   // Check what kind user is logging in and set the user name
@@ -67,15 +78,15 @@ export class LoginService {
     this.sendUserName.emit(user.userName);
   }
 
-    private handleError<T>(operation: string, result?: T): any {
-      return(error: any): Observable<T> => {
-        console.error(error);
-        this.log(`${operation} failed: ${error.error.message}`);
-        return of(result as T);
-      };
-    }
-  
-    private log(message: string): void {
-      this.messageService.add(`${message}`);
-    }
+  private handleError<T>(operation: string, result?: T): any {
+    return(error: any): Observable<T> => {
+      console.error(error);
+      this.log(`${operation} failed: ${error.error.message}`);
+      return of(result as T);
+    };
+  }
+
+  private log(message: string): void {
+    this.messageService.add(`${message}`);
+  }
 }

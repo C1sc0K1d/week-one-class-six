@@ -3,4 +3,7 @@ export interface User {
 	userName : string;
 	password : string;
 	isAdmin? : boolean;
+	phone? : string;
+	address? : string;
+	email? : string;
 }

@@ -22,7 +22,8 @@
   <div>
     <br>
     <br>
-    <span class="login__signin" (click)="goToSignIn()">Don't have a user yet, come make some noise with us!!</span>
+    <span *ngIf="loginService.getUser().toLowerCase() === 'login'" class="login__signin" (click)="goToSignIn()">Don't
+      have a user yet, come make some noise with us!!</span>
     <br>
     <br>
     <span *ngIf="loginService.getIsAdmin()" class="login__signin" (click)="goToAdminPage()">Administration</span>

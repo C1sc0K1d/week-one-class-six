@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppComponent } from './app.component';
 import { CartModalComponent } from './shared/components/cart-modal/cart-modal.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule, HttpClientModule
+        RouterTestingModule, HttpClientModule, 
+        NgxUiLoaderModule
       ],
       declarations: [
         AppComponent,

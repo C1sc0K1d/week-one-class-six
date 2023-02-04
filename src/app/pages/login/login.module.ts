@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { SigninComponent } from "./signin/signin.component";
 import { AdminGuard } from "src/app/core/guards/admin.guard";
+import { UserGuard } from "src/app/core/guards/user.guard";
 
 const routes: Routes = [
 	{
@@ -18,6 +19,11 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
 		canActivate : [AdminGuard]
+	},
+	{
+		path: 'user',
+		component: UserComponent,
+		canActivate : [UserGuard]
 	},
 	{
 		path:'signin',

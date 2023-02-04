@@ -14,7 +14,8 @@ export class UserGuard implements CanActivate {
   constructor(private loginService : LoginService, private router: Router, private messageService: MessageService, private auth: AuthTokenInterceptor) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if (this.loginService.getUser().toLowerCase() !== 'login' && this.auth) return true;
+    this.auth.token = localStorage.getItem('authToken');
+    if (this.loginService.getUser().toLowerCase() !== 'login' && this.auth.token) return true;
     this.messageService.add("Not logged in");
     this.router.navigate(['/home']);
     return false;

@@ -29,23 +29,27 @@ describe('LoginService', () => {
   });
 
   it('should have a user variable', () => {
-    expect(service.getUser()).toBe('Login');
+    expect(service.getUser()).toBe('login');
   });
 
   it('should set the user variable', () => {
+    localStorage.setItem('userName', 'John');
     service.setUser('John');
     expect(service.getUser()).toBe('John');
+    localStorage.removeItem('userName');
   });
 
   it('should check if user is admin', () => {
+    localStorage.setItem('isAdmin', 'true');
     service.setIsAdmin(true);
     expect(service.getIsAdmin()).toBe(true);
+    localStorage.removeItem('isAdmin');
   });
 
   it('should logout', () => {
     service.setUser('John');
     service.logout();
-    expect(service.getUser()).toBe('Login');
+    expect(service.getUser()).toBe('login');
   });
 
   it('should login a user', () => {

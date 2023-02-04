@@ -12,6 +12,8 @@ import { UserGuard } from './core/guards/user.guard';
 import { AuthTokenInterceptor } from './core/authentication/auth-token.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { NgxUiLoaderModule } from "ngx-ui-loader";
+
 @NgModule({
   declarations: [			
     AppComponent
@@ -23,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CartModule,
     LoginModule,
     HttpClientModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+    NgxUiLoaderModule
   ],
   providers: [
     AdminGuard,

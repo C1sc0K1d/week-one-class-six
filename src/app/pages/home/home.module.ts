@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 import { HomeComponent } from "./home.component";
 import { ItemsComponent } from "./items/items.component";
