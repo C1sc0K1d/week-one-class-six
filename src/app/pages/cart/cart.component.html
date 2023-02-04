@@ -33,7 +33,9 @@
       <label class="cart__dicount_label" for="discount">Get 10% off, type: <b>"10OFF"</b></label>
       <input class="cart__dicount_input" type="text" name="discount" id="discount" [(ngModel)]="discount">
       <button class="cart__get_dicount_button" (click)="getDiscount(discount)">get discount!</button>
-      <button class="cart__get_Checkout_button" (click)="goToPage('/cart/checkout')">Checkout!</button>
+      <button class="cart__get_Checkout_button" (click)="goToPage('/cart/checkout')"
+        [disabled]="!isLoggedIn">Checkout!</button>
+      <p style="color: red; font-weight: bolder;" *ngIf="!isLoggedIn">Must be logged in to continue</p>
     </div>
   </div>
 </div>

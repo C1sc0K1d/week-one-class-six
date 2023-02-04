@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CartService } from './core/services/cart.service';
 import { Product } from './shared/interfaces/product';
 
@@ -20,10 +21,14 @@ export class AppComponent implements OnInit {
 
   menu: boolean = false;
   
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private ngxService: NgxUiLoaderService) { }
 
   // Functions
   ngOnInit(): void {
+    this.ngxService.start();
+    setTimeout(() => {
+      this.ngxService.stop();
+    }, 5000);
     this.cartService.callModalEmitter.subscribe(isVisible => {
       this.seeModal = isVisible;
       this.haveDiscount = this.cartService.getHaveDiscount();

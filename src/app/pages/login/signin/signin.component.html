@@ -1,0 +1,87 @@
+<div class="signin__container">
+  <form class="signin__add_user_form" [formGroup]="userForm" (ngSubmit)="newUser()">
+    <h2 style="cursor: default;">Create Account!! </h2>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userName">Your User Name </label>
+      <input formControlName="userName" class="signin__input" type="text" id="userName" name="userName"
+        placeholder="Your Full Name" />
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userEmail">Your E-mail </label>
+      <input formControlName="email" class="signin__input" type="text" id="userEmail" name="userEmail"
+        placeholder="you@email.com" />
+      <span *ngIf="userForm.get('email')?.invalid" style="color: red;">E-mail not valid</span>
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userPhone">Your Phone </label>
+      <input formControlName="phone" class="signin__input" type="text" id="userPhone" name="userPhone"
+        placeholder="dd123456789" pattern="[0-9]{11}" />
+      <span *ngIf="userForm.get('phone')?.invalid" style="color: red;">Phone number not valid</span>
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userPostalCode">Your Postal Code </label>
+      <input formControlName="postalCode" class="signin__input" type="text" id="userPostalCode" name="userPostalCode"
+        placeholder="12345678" pattern="[0-9]{8}" />
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userAddress">Your Address </label>
+      <input formControlName="address" [attr.disabled]="true" class="signin__input" type="text" id="userAddress"
+        name="userAddress" />
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userNumber">Your Address Number </label>
+      <input formControlName="number" class="signin__input" type="text" id="userNumber" name="userNumber"
+        placeholder="123" />
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userComplement">Residence Complement </label>
+      <input formControlName="complement" class="signin__input" type="text" id="userComplement" name="userComplement"
+        placeholder="Ex: Apto 098" />
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userNeighborhood">Your Neighborhood Name </label>
+      <input formControlName="neighborhood" [attr.disabled]="true" class="signin__input" type="text"
+        id="userNeighborhood" name="userNeighborhood" />
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userCity">Your City </label>
+      <input formControlName="city" [attr.disabled]="true" class="signin__input" type="text" id="userCity"
+        name="userCity" />
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userState">Your State </label>
+      <input formControlName="state" [attr.disabled]="true" class="signin__input" type="text" id="userState"
+        name="userState" />
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userPassword">Your Password </label>
+      <input formControlName="password" class="signin__input" type="text" id="userPassword" name="userPassword"
+        placeholder="****" />
+      <span *ngIf="userForm.get('password')?.invalid" style="color: red;">Not valid password</span>
+    </div>
+    <div class="signin__inputs">
+      <label class="signin__label" for="userRepeatPassword">Repeat Your Password </label>
+      <input formControlName="repeatPassword" class="signin__input" type="text" id="userRepeatPassword"
+        name="userRepeatPassword" placeholder="****" />
+      <span *ngIf="userForm.hasError('notMatch')" style="color: red;">Password must be equal</span>
+    </div>
+    <div class="signin__inputs_checkbox">
+      <div class="signin__input_checkbox">
+        <label class="signin__label" style="width: auto; margin-right: 10px;" for="policies">Privacy Policies</label>
+        <input formControlName="policies" style="width: auto;" class="signin__input" type="checkbox" id="policies"
+          name="policies" />
+      </div>
+      <div class="signin__input_checkbox">
+        <label class="signin__label" style="width: auto; margin-right: 10px;" for="data">Allow Sharing Data For Internal
+          Use
+        </label>
+        <input formControlName="data" style="width: auto;" class="signin__input" type="checkbox" id="data"
+          name="data" />
+      </div>
+    </div>
+    <div class="signin__buttons">
+      <button class="signin__clear_button" type="button" (click)="clearUserForm()">Clear Informations</button>
+      <button class="signin__add_button" type="submit" [disabled]="!userForm.valid">Rock With Us!!</button>
+    </div>
+  </form>
+</div>

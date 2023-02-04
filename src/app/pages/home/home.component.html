@@ -5,6 +5,12 @@
   </div>
 
   <div class="home__component">
-    <app-items *ngFor="let product of products" [product]="product" (addProductEvent)="addProduct($event)"></app-items>
+    <div class="home__search_bar_div">
+      <label class="home__search_bar_label" for="instrumentSearch">Search Instruemnt</label>
+      <input [(ngModel)]="searcher" (ngModelChange)="filterByValue(products, searcher)" class="home__search_bar"
+        type="search" id="instrumentSearch" name="instrumentSearch">
+    </div>
+    <app-items *ngFor="let product of filteredProducts" [product]="product" (addProductEvent)="addProduct($event)">
+    </app-items>
   </div>
 </div>

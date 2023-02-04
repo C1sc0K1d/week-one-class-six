@@ -1,1 +1,44 @@
-<p>user works!</p>
+<div>
+  <form class="user__add_user_form" [formGroup]="userForm" (ngSubmit)="updateUser()">
+    <div class="user__inputs">
+      <label class="user__label" for="userName">Your User Name </label>
+      <input formControlName="userName" class="user__input" type="text" id="userName" name="userName"
+        placeholder="Your Full Name" />
+    </div>
+    <div class="user__inputs">
+      <label class="user__label" for="userEmail">Your E-mail </label>
+      <input formControlName="email" class="user__input" type="text" id="userEmail" name="userEmail"
+        placeholder="you@email.com" />
+    </div>
+    <div class="user__inputs">
+      <label class="user__label" for="userPhone">Your Phone </label>
+      <input formControlName="phone" class="user__input" type="text" id="userPhone" name="userPhone"
+        placeholder="dd123456789" pattern="[0-9]{11}" />
+    </div>
+    <div class="user__inputs">
+      <label class="user__label" for="userAddress">Your Address </label>
+      <input formControlName="address" class="user__input" type="text" id="userAddress" name="userAddress" />
+    </div>
+    <div class="user__inputs">
+      <label class="user__label" for="userPassword">Your Password </label>
+      <input formControlName="password" class="user__input" type="text" id="userPassword" name="userPassword"
+        placeholder="****" />
+    </div>
+    <div class="user__inputs">
+      <label class="user__label" for="userRepeatPassword">Your Password Again</label>
+      <input formControlName="repeatPassword" class="user__input" type="text" id="userRepeatPassword"
+        name="userRepeatPassword" placeholder="****" />
+      <span *ngIf="userForm.hasError('notMatch')" style="color: red;">Password must be equal</span>
+    </div>
+    <div class="user__inputs_checkbox">
+      <div class="user__input_checkbox">
+        <label class="user__label" style="width: auto; margin-right: 10px;" for="news">Sing News Letter</label>
+        <input formControlName="news" style="width: auto;" class="user__input" type="checkbox" id="news" name="news" />
+      </div>
+    </div>
+    <div class="user__buttons">
+      <button class="user__clear_button" type="button" (click)="restoreInfos()">Restore Informations</button>
+      <button class="user__add_button" type="submit" [disabled]="!userForm.valid">Update Informations!!</button>
+    </div>
+  </form>
+</div>

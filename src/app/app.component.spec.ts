@@ -1,23 +1,28 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
 import { AppComponent } from './app.component';
 import { CartModalComponent } from './shared/components/cart-modal/cart-modal.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { MessagesComponent } from './shared/components/messages/messages.component';
 import { NavigatorComponent } from './shared/components/navigator/navigator.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule, HttpClientModule, 
+        NgxUiLoaderModule
       ],
       declarations: [
         AppComponent,
         HeaderComponent,
         FooterComponent,
         CartModalComponent,
-        NavigatorComponent
+        NavigatorComponent,
+        MessagesComponent
       ],
     }).compileComponents();
   });

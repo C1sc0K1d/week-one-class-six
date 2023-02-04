@@ -22,6 +22,7 @@ export class NavigatorComponent implements OnInit {
 
   // Functions
   ngOnInit(): void {
+    this.name = this.loginService.getUser()[0].toUpperCase() + this.loginService.getUser().substring(1).toLowerCase();
     // Check if the user name has been changed and update the value of the modal user name
     this.loginService.sendUserName.subscribe(login => this.name = login[0].toUpperCase() + login.substring(1).toLowerCase());
   }

@@ -4,6 +4,8 @@
     <div class="navigator__link" (click)="goToPage('/cart')" (click)="callModal()">Cart</div>
   </div>
   <div class="navigator__links">
+    <div *ngIf="name !== 'Login'" class="navigator__link_bottom" (click)="goToPage('/login/user')"
+      (click)="callModal()">Account</div>
     <div class="navigator__link_bottom" (click)="showDropdown()">Categories</div>
     <div
       [ngClass]="{'navigator__dropdown_content_hidden': !seeDropdown, 'navigator__dropdown_content_show': seeDropdown}">

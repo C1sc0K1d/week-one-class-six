@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminGuard } from 'src/app/core/guards/admin.guard';
+import { UserGuard } from 'src/app/core/guards/user.guard';
 import { CartService } from 'src/app/core/services/cart.service';
+import { LoginService } from 'src/app/core/services/login.service';
 import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
@@ -24,7 +27,9 @@ export class CartComponent implements OnInit {
 
   totalOrSubTotalText: string = 'Total: ';
 
-  constructor(private cartService: CartService, private router: Router) { }
+  isLoggedIn: boolean = false;
+
+  constructor(private cartService: CartService, private router: Router, private loginService: LoginService ) { }
 
   // Functions
   ngOnInit() : void {
@@ -38,6 +43,7 @@ export class CartComponent implements OnInit {
     if (this.haveDiscount) {
       this.totalOrSubTotalText = 'Sub-total: ';
     }
+    this.isLoggedIn = (this.loginService.getUser().toLowerCase() !== "login");
   }
 
   // Function to remove a item

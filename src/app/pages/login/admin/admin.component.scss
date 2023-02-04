@@ -1,0 +1,105 @@
+* {
+  min-width: auto;
+  min-height: auto;
+  height: auto;
+  color: white;
+  overflow: visible;
+}
+
+.admin__container {
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  background-color: #483d8b;
+  padding: 25px;
+  overflow: scroll;
+}
+
+.admin__add_instrument_form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto 30px auto;
+  border-bottom: 1px solid white;
+}
+
+.admin__inputs {
+  width: 45%;
+  margin: 10px auto;
+}
+
+.admin__label {
+  font-size: 0.9em;
+  margin: 3px 0;
+  cursor: default;
+}
+
+.admin__input {
+  padding: 10px 8px;
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+  border-radius: 3px;
+}
+
+.admin__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin__clear_button,
+.admin__add_button {
+  width: 40%;
+  color: white;
+  padding: 15px 10px;
+  border-radius: 5px;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.admin__clear_button {
+  background-color: red;
+}
+
+.admin__add_button {
+  background-color: green;
+}
+
+.admin__add_button:disabled {
+  background-color: rgb(9, 56, 9);
+  cursor: default;
+}
+
+.admin__user_container {
+  width: 95%;
+  background-color: white;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+.admin__user_info {
+  font-size: 21px;
+  width: auto;
+  color: black;
+}
+
+.admin__user_delete {
+  width: auto;
+  font-size: 21px;
+  color: white;
+  background-color: red;
+  border-radius: 7px;
+  padding: 15px 10px;
+  cursor: pointer;
+}
